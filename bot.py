@@ -22,7 +22,6 @@ def get_page(group, week=''):
         domain=config.domain,
         week=week,
         group=group.upper())
-    print(url)
     response = requests.get(url)
     web_page = response.text
     return web_page
@@ -156,7 +155,6 @@ def get_near_lesson(message):
             class_number = 0
             if today == day:
                 for i in range(len(lessons_lst)):
-                    # print(day['date'].hour, '<', int(times_lst[i][:2]), 'and',  day['date'].minute, '<', int(times_lst[i][3:5]))
                     if day['date'].hour < int(times_lst[i][:2]) and day['date'].minute < int(times_lst[i][3:5]):
                         class_number = i
                         break
@@ -193,7 +191,6 @@ def get_all_schedule(message):
     
     resp = ''
     for weekday in weekdays:
-        print(weekday)
         resp += '\n\n------------------------- <b>{}</b> -------------------------\n\n'.format(weekday.upper())
         day = get_day(weekday)
         web_page = get_page(group, parity)
