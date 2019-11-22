@@ -171,7 +171,7 @@ def get_near_lesson(message):
     
     
     
-    resp = '<b>SCEDULE FOR {}</b>'.format(day['date'].strftime("%Y-%m-%d"))
+    resp = '<b>SCEDULE FOR {}</b>\n'.format(day['date'].strftime("%Y-%m-%d"))
     
     resp += '<b>{}</b>, {}, {}\n'.format(times_lst[class_number], locations_lst[class_number], lessons_lst[class_number])
     bot.send_message(message.chat.id, resp, parse_mode='HTML')
