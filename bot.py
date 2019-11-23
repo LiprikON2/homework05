@@ -7,7 +7,7 @@ import config
 
 
 # telebot.apihelper.proxy = {'https':'54.37.131.161:3128'} # main proxy
-# telebot.apihelper.proxy = {'https':'194.226.34.132:5555'} # secondary
+telebot.apihelper.proxy = {'https':'194.226.34.132:5555'} # secondary
 # telebot.apihelper.proxy = {'https':'31.186.102.162:3128'}
 # telebot.apihelper.proxy = {'https':'95.47.183.23:3128'}
 # telebot.apihelper.proxy = {'https':'217.113.122.142:3128'}
