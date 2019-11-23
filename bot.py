@@ -8,7 +8,7 @@ import config
 
 # telebot.apihelper.proxy = {'https':'54.37.131.161:3128'} # main proxy
 # telebot.apihelper.proxy = {'https': '194.226.34.132:5555'}  # secondary
-telebot.apihelper.proxy = {'https':'31.186.102.162:3128'} #
+telebot.apihelper.proxy = {'https': '31.186.102.162:3128'}
 # telebot.apihelper.proxy = {'https':'95.47.183.23:3128'}
 # telebot.apihelper.proxy = {'https':'217.113.122.142:3128'}
 # telebot.apihelper.proxy = {'https':'95.128.246.35:3128'}
@@ -155,7 +155,13 @@ def get_near_lesson(message):
             class_number = 0
             if today == day:
                 for i in range(len(lessons_lst)):
-                    if datetime.datetime.strptime('{}:{}'.format(day['date'].hour, day['date'].minute), '%H:%M') < datetime.datetime.strptime(times_lst[i][:5], '%H:%M'):
+                    current_time = datetime.datetime.strptime(
+                        '{}:{}'.format(day['date'].hour, day['date'].minute), '%H:%M')
+                    class_time = datetime.datetime.strptime(
+                        times_lst[i][:5], '%H:%M')
+
+                    # If class did not start yet
+                    if current_time < class_time:
                         class_number = i
                         is_class_found = True
                         break
@@ -169,7 +175,7 @@ def get_near_lesson(message):
             resp = 'Looks like there is no classes in the next 15 days O_o'
             bot.send_message(message.chat.id, resp, parse_mode='HTML')
             return
-        
+
     resp = '<b>SCEDULE FOR {}</b>\n'.format(day['date'].strftime("%Y-%m-%d"))
 
     resp += '<b>{}</b>, {}, {}\n'.format(
