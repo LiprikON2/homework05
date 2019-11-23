@@ -1,1 +1,5 @@
 API_KEY.txt
+config.py
+.vscode
+__pycache__
+.mypy_cache
